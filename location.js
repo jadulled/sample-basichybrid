@@ -1,4 +1,4 @@
-//Intel Location Service library
+//Intel Location Service object
 var map;
 
 function initMap() {
