@@ -1,0 +1,23 @@
+{
+  "project": {
+    "projectSettingsVersion": "1.0",
+    "creationData": {
+      "type": "App Starter",
+      "src": "http://appstarter2.html5m.com/getFile.php?id=f287e036-b5f8-45ac-bec2-10b111331c5a",
+      "projectGuid": "2c905fe7-4b6c-4f05-8b27-a53b7900aceb",
+      "lastModifiedDate": 1378230016008,
+      "creationDate": 1377529640337
+    },
+    "libraries": [],
+    "services": [],
+    "projectFiles": {},
+    "projectDirectories": {}
+  },
+  "emulator": {
+    "OTAU": {
+      "message": null
+    },
+    "auto-refresh": "auto-refresh"
+  },
+  "SettingsVersion": "1.0"
+}
