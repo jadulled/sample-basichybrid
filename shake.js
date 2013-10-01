@@ -31,9 +31,9 @@ var objShake = function() {
 					var deltaY = Math.abs(acc.y - objShake.prevY);
 					var deltaZ = Math.abs(acc.z - objShake.prevZ);	
 					
-					if ( deltaX > objShake.sensitivity && deltaY > objShake.sensitivity ||
-						 deltaX > objShake.sensitivity && deltaZ > objShake.sensitivity ||
-						 deltaZ > objShake.sensitivity && deltaY > objShake.sensitivity) {
+					if ( deltaX > objShake.sensitivity || 
+						 deltaY > objShake.sensitivity ||
+						 deltaZ > objShake.sensitivity) {
 						 
 						AppMobi.notification.beep();
 						console.log("beep");
