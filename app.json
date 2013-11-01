@@ -3,7 +3,7 @@
 "title":"Basic Hybrid App",
 "tooltip":"A sample app showcasing how to use the intel.xdk library (JavaScript bridge library) for hybrid apps",
 "description":"[App Designer Ready] This demonstration illustrates how to set up a basic application with the intel.xdk library (JavaScript bridge library) to access native features of the device.",
-"articleUrl":"",
+"articleUrl":"http://software.intel.com/en-us/articles/intel-xdk-basic-hybrid-app-sample",
 "keywords":["App Framework", "intel.xdk API", "App Designer"],
 "visible" : "true",
 "highlights" : ["App Framework", "intel.xdk API", "App Designer"],
