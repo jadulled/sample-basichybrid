@@ -7,7 +7,7 @@ Intel(R) XDK
 This sample is part of the Intel(R) XDK. 
 Please sign up the beta at http://software.intel.com/en-us/html5.
 To see the technical detail of the sample, please visit the sample article page 
-at http://software.intel.com/en-us/articles/media-sample-using-phonegap. 
+at http://software.intel.com/en-us/articles/intel-xdk-basic-hybrid-app-sample. 
 
 Application Files
 -----------------
