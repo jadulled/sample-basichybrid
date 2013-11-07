@@ -5,7 +5,7 @@ This sample application demonstrates how to use the intel.xdk JavaScript bridge 
 Intel(R) XDK
 -------------------------------------------
 This sample is part of the Intel(R) XDK. 
-Please sign up the beta at http://software.intel.com/en-us/html5.
+Please sign up at http://software.intel.com/en-us/html5.
 To see the technical detail of the sample, please visit the sample article page 
 at http://software.intel.com/en-us/articles/intel-xdk-basic-hybrid-app-sample. 
 
