@@ -25,7 +25,7 @@
     {
         try
         {
-            intel.xdk.player.playSound("sounds/bark02.wav"); 
+            intel.xdk.player.playSound("sounds/flute_play.wav"); 
         }
         catch(e) { } 
     }
