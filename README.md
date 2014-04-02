@@ -56,9 +56,9 @@ App Framework
 
 Sounds
 --------------------------
-*flute_play.wav
+*dog_bark.wav
 
-* source: http://www.freesound.org/people/cms4f/sounds/159136/
+* source: http://freesound.org/people/RawGreen/sounds/159176/
 * license: http://creativecommons.org/publicdomain/zero/1.0/
 
 IMAGES: *.png; images/*.png
