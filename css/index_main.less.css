@@ -102,13 +102,13 @@ form.urow {
   /* margin: 8px 0px; */
 
 }
-/* center-h-v-col */
 .center-h-v-col > .widget {
-  position: absolute;
+  position: absolute !important;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
+  margin-top: 0 !important;
 }
 /* shim */
 .uib_shim {
@@ -130,6 +130,9 @@ form.urow {
   box-sizing: content-box;
 }
 /* page */
+.hidden {
+  display: none;
+}
 .upage-content,
 .upage-outer {
   position: relative;
@@ -138,14 +141,19 @@ html,
 body {
   height: 100%;
 }
+body:not(#afui) .uwrap,
 body:not(#afui) .upage,
-body:not(#afui) .upage-outer,
 body:not(#afui) .upage-content {
   height: 100%;
 }
+body:not(#afui) .upage-outer {
+  height: auto;
+}
 /* position relative works fine. but fixed can be elected as well */
 /* .upage-content, .upage-outer { position: fixed; height:100%; } */
-/* .upage{ overflow-x: hidden;}  */
+.upage {
+  overflow-x: hidden;
+}
 .upage-content {
   z-index: 1;
 }
@@ -154,12 +162,12 @@ body:not(#afui) .upage-content {
 }
 /* sidebars and crossbars */
 .uib_sidebar {
-  position: absolute;
+  position: fixed;
   height: 100%;
   top: 0px;
 }
 .uib_crossbar {
-  position: absolute;
+  position: fixed;
   width: 100%;
   left: 0px;
 }
@@ -199,6 +207,8 @@ body:not(#afui) .upage-content {
   z-index: 4;
 }
 .sidebar-content {
+  height: 100%;
+  overflow-y: auto;
   position: relative;
   margin: 0;
 }
@@ -207,8 +217,10 @@ body:not(#afui) .upage-content {
   margin: 0;
   /* background-image:url('images/gripper.png'); */
 }
-#afui .af-header,
-#afui .af-footer {
+.template {
+  display: none !important;
+}
+#afui header {
   display: -webkit-flex !important;
   display: -moz-flex !important;
   display: -ms-flex !important;
@@ -220,41 +232,41 @@ body:not(#afui) .upage-content {
   -o-align-items: center;
   align-items: center;
 }
-#afui .af-header input,
-#afui .af-footer input {
+#afui header#defaultHeader {
+  display: none !important;
+}
+#afui header input {
   height: 32px;
   padding: 6px;
   font-size: 13px;
 }
-#afui .af-header > .horiz-area,
-#afui .af-footer > .horiz-area {
-  -webkit-flex-grow: 1;
-  -moz-flex-grow: 1;
-  -ms-flex-grow: 1;
-  -o-flex-grow: 1;
-  flex-grow: 1;
+#afui header > .horiz-area {
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  -o-flex: 1;
+  flex: 1;
   pointer-events: none;
   z-index: 1;
 }
-#afui .af-header > .horiz-area > *,
-#afui .af-footer > .horiz-area > * {
+#afui header > .horiz-area > * {
   pointer-events: auto;
 }
-#afui .af-header > h1,
-#afui .af-footer > h1 {
+#afui header > h1 {
   text-align: center !important;
 }
-#afui .af-header > .single-centered,
-#afui .af-footer > .single-centered {
+#afui header > .single-centered {
   position: absolute;
   width: 100%;
   text-align: center;
 }
-#afui .af-header > .single-centered > *,
-#afui .af-footer > .single-centered > * {
+#afui header > .single-centered > * {
   z-index: 1;
   margin-left: auto !important;
   margin-right: auto !important;
+}
+#afui header > .content-area.left.with-back > :not(#backButton) {
+  display: none;
 }
 .uib_row_1:not(.cright) > .col {
   padding-right: 20px;
@@ -287,10 +299,25 @@ body:not(#afui) .upage-content {
     min-height: 100px;
   }
 }
+.figure-align {
+  display: table;
+  margin: 0px auto;
+}
+.figure-align img {
+  width: 100%;
+}
+.image-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+@media all {
+  #afui .scale-image {
+    width: 200px;
+  }
+}
 @media all {
   #afui .d-margins {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
   #afui .wrapping-col > .d-margins {
     margin-left: 6px;
@@ -320,32 +347,11 @@ body:not(#afui) .upage-content {
     min-height: 100px;
   }
 }
-.figure-align {
-  display: table;
-  margin: 0px auto;
-}
-.image-cell {
-  display: table-cell;
-  vertical-align: middle;
-}
 @media all {
-  #afui .scale-image img {
-    width: 50%;
-  }
-}
-@media all {
-  #afui .bkgd {
+  #afui .background {
     background-color: #ffffff;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
-}
-@media all {
-  
-}
-@media all {
-  #afui .text-center {
-    text-align: center;
+    background-attachment: scroll;
   }
 }

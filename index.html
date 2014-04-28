@@ -1,134 +1,112 @@
 <!DOCTYPE html>
+<!--HTML5 doctype-->
 <html>
+	<!--   
+   You may substitute jQuery for the App Framework selector library.
+   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+  -->
+	<!-- content goes here-->
+	<!--
+		<script type="text/javascript" charset="utf-8" src="js/camera.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/shake.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/location.js"></script> 
+		-->
+	<!--   
+   You may substitute jQuery for the App Framework selector library.
+   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+  -->
+	<!-- content goes here-->
 
-<head>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="app_framework/css/af.ui.min.css">
+		<link rel="stylesheet" type="text/css" href="app_framework/css/icons.min.css">
+		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+		<title>Your New Application</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<style type="text/css">
+			/* Prevent copy paste for all elements except text fields */
+			*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+			input, textarea  { -webkit-user-select:text; }
+		</style>
+		<!--
+		<script type="text/javascript" charset="utf-8" src="js/camera.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/shake.js"></script> 
+		<script type="text/javascript" charset="utf-8" src="js/location.js"></script> 
+		-->
+		<script src="intelxdk.js"></script>
+		<script src="js/main.js"></script>
+		<script type="text/javascript">
+			/* Intel native bridge is available */
+			var onDeviceReady=function(){
+			//hide splash screen
+			intel.xdk.device.hideSplashScreen();
+			};
+			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+		</script>
+		<!--   
+   You may substitute jQuery for the App Framework selector library.
+   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+  -->
+		<script type="application/javascript" src="app_framework/appframework.js"></script>
+		<script type="application/javascript" src="app_framework/appframework.ui.js"></script>
+		<script src="cordova.js"></script>
+	</head>
 
+	<body id="afui">
 
-  <link rel="stylesheet" type="text/css" href="app_framework/css/af.ui.min.css">
-  <link rel="stylesheet" type="text/css" href="app_framework/css/icons.min.css">
-  <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
-  <title>Basic Hybrid</title>
+		<!-- content goes here-->
+		<div class="uwrap" id="content">
+			<div class="upage panel" id="mainpage" data-header="af-header-0" data-footer="none">
+				<div class="upage-outer">
+					<header class="container-group inner-element uib_w_1" data-uib="app_framework/header" data-ver="0" id="af-header-0">
+						<h1>Basic Hybrid App</h1>
+						<div class="widget-container wrapping-col single-centered"></div>
+						<div class="widget-container content-area horiz-area wrapping-col left"></div>
+						<div class="widget-container content-area horiz-area wrapping-col right"></div>
+					</header>
+					<div class="upage-content" id="mainsub">
 
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+						<div class="grid grid-pad urow uib_row_1 row-height-1 background" data-uib="layout/row" data-ver="0">
+							<div class="col uib_col_1 col-0_12-12" data-uib="layout/col" data-ver="0">
+								<div class="widget-container content-area vertical-col center">
 
-  <style type="text/css">
-    /* Prevent copy paste for all elements except text fields */
-    *  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-    input, textarea  { -webkit-user-select:text; }
-    
-    /* Set up the page with a default background image */
-    body {
-        background-color:#fff;
-        color:#000;
-        font-family:Arial;
-        font-size:28pt;
-        margin:0px;padding:0px;
-        background-image:url('images/background.jpg');
-    }
-  </style>
+									<div class="widget uib_w_2 scale-image d-margins" data-uib="media/img" data-ver="0">
+										<figure class="figure-align">
+											<img src="images/intellogo.png">
+											<figcaption data-position="bottom"></figcaption>
+										</figure>
+									</div>
+									<span class="uib_shim"></span>
+								</div>
+							</div>
+							<span class="uib_shim"></span>
+						</div>
 
-  <!--
-    <script type="text/javascript" charset="utf-8" src="js/camera.js"></script> 
-    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script> 
-    <script type="text/javascript" charset="utf-8" src="js/location.js"></script> 
-    -->
-  <script src="js/main.js"></script>    
-  <script src="intelxdk.js"></script>
+						<div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row" data-ver="0">
+							<div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
+								<div class="widget-container content-area vertical-col">
 
-  <script type="text/javascript">
-    /* This function runs once the page is loaded, but Intel XDK is not yet active */
-    var init = function(){
-    
-    };
-      
-    window.addEventListener("load",init,false);  
-    
-    /* This code prevents users from dragging the page */
-    var preventDefaultScroll = function(event) {
-        event.preventDefault();
-        window.scroll(0,0);
-        return false;
-    };
-      
-    document.addEventListener('touchmove', preventDefaultScroll, false);
-    
-    /* This code is used to run as soon as Intel XDK activates */
-    var onDeviceReady=function(){
-      //lock orientation
-      intel.xdk.device.setRotateOrientation("portrait");
-      intel.xdk.device.setAutoRotate(false);
-      
-      //manage power
-      intel.xdk.device.managePower(true,false);
+									<a class="button widget uib_w_3 d-margins" data-uib="app_framework/button" data-ver="0" onclick="beepOnce()">Beep</a><a class="button widget uib_w_4 d-margins" data-uib="app_framework/button" data-ver="0" onclick="vibrateDevice()">Vibrate</a>
+									<a
+									class="button widget uib_w_5 d-margins" data-uib="app_framework/button" data-ver="0" onclick="playSound()">Play Sound</a><a class="button widget uib_w_6 d-margins" data-uib="app_framework/button" data-ver="0" onclick="playDead()">Play Dead</a><span class="uib_shim"></span>
+								</div>
+							</div>
+							<span class="uib_shim"></span>
+						</div>
+					</div>
+					<!-- /upage-content -->
 
-      //hide splash screen
-    	intel.xdk.device.hideSplashScreen();	
-    };
-      
-    document.addEventListener("intel.xdk.device.ready",onDeviceReady,false); 
-  </script>
+				</div>
+				<!-- /upage-outer -->
+				<div id="shroud" style="position:absolute;top:0px;left:0px;color:black;background-color:Black;width:768px;height:1304px;display:none;z-index:100;" ontouchstart="wakeUp();">
+				</div>
+			</div>
+			<!-- /upage -->
 
-  <script type="application/javascript" src="app_framework/appframework.min.js"></script>
-  <script type="application/javascript" src="app_framework/appframework.ui.min.js"></script>
-</head>
-
-<body id="afui">
-
-
-  <!-- content goes here-->
-  <div class="uwrap" id="content">
-    <div class="upage panel bkgd" id="page0" data-header="af-header-0" data-footer="none">
-      <header class="af-header container-group outer-element uib_w_1" data-uib="app_framework/header" id="af-header-0">
-        <h1>Basic Hybrid App</h1>
-        <div class="widget-container wrapping-col single-centered"></div>
-        <div class="widget-container content-area horiz-area wrapping-col left"></div>
-        <div class="widget-container content-area horiz-area wrapping-col right"></div>
-      </header>
-      <div class="upage-outer">
-        <div class="upage-content">
-
-          <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row">
-            <div class="col uib_col_1 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area vertical-col">
-
-
-                <div class="widget uib_w_5 scale-image text-center" data-uib="media/img">
-                  <figure class="figure-align">
-                    <img src="images/intellogo.png">
-                    <figcaption data-position="bottom"></figcaption>
-                  </figure>
-                </div>
-                <span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
-
-          <div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row">
-            <div class="col uib_col_2 col-0_12-12" data-uib="layout/col">
-              <div class="widget-container content-area vertical-col">
-                <a class="button widget uib_w_2 d-margins" data-uib="app_framework/button" ontouchstart="beepOnce();">Beep</a>
-                <a class="button widget uib_w_3 d-margins" data-uib="app_framework/button" ontouchstart="vibrateDevice();">Vibrate</a>
-                <a class="button widget uib_w_4 d-margins" data-uib="app_framework/button" ontouchstart="playSound();">Play Sound</a><a class="button widget uib_w_6 d-margins" data-uib="app_framework/button" ontouchstart="playDead();">Play Dead</a>
-                <span class="uib_shim"></span>
-              </div>
-            </div>
-            <span class="uib_shim"></span>
-          </div>
-        </div>
-        <!-- /upage-content -->
- 
-      </div>
-      <!-- /upage-outer -->
-              <!--My code-->    
-  <div id="shroud" style="position:absolute;top:0px;left:0px;color:black;background-color:Black;width:768px;height:1304px;display:none;z-index:100;" ontouchstart="wakeUp();" >
-    </div>
-    </div>
-    <!-- /upage --> 
-  </div>
-  <!-- /uwrap -->
-    
-</body>
+		</div>
+		<!-- /uwrap -->
+	</body>
 
 </html>
