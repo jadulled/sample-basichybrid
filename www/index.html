@@ -38,12 +38,13 @@
 		<script src="intelxdk.js"></script>
 		<script src="js/main.js"></script>
 		<script type="text/javascript">
-			/* Intel native bridge is available */
-			var onDeviceReady=function(){
-			//hide splash screen
-			intel.xdk.device.hideSplashScreen();
-			};
-			document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+			var onDeviceReady=function(){                             // called when Cordova is ready
+               if( window.Cordova && navigator.splashscreen ) {     // Cordova API detected
+					navigator.splashscreen.hide() ;                 // hide splash screen
+				}
+           } ;
+
+           document.addEventListener("deviceready", onDeviceReady, false) ;
 		</script>
 		<!--   
    You may substitute jQuery for the App Framework selector library.
@@ -52,6 +53,7 @@
 		<script type="application/javascript" src="app_framework/appframework.js"></script>
 		<script type="application/javascript" src="app_framework/appframework.ui.js"></script>
 		<script src="cordova.js"></script>
+        <script src="xhr.js"></script>
 	</head>
 
 	<body id="afui">
