@@ -1,10 +1,13 @@
-/*jslint browser:true, devel:true, white:true, vars:true, eqeq:true */
-/*global $:false, intel:false*/
+/*jslint browser:true, devel:true, white:true, vars:true, eqeq:true, unparam:true */
+/*jshint unused:false */
+/*global intel */
+
 //Intel Location Service object
 var map;
 
+//inject a div to display the map
 function initMap() {
-    //inject a div to display the map
+    'use strict';
     var mapContainerDiv = document.createElement('div');
     mapContainerDiv.id = "mapContainerDiv";
     mapContainerDiv.setAttribute("style", "width:100%;background-color:blue;");
@@ -34,9 +37,12 @@ function initMap() {
     }
 
     function on_login(response, status) {
+
         console.log("on login");
-        if (status != "OK") alert("Login failure: " + status);
-        else drawMap();
+        if (status != "OK") {alert("Login failure: " + status);}
+        else {
+            drawMap();
+        }
     }
 }
 window.addEventListener("load", initMap, false);

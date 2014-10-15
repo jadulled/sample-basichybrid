@@ -1,8 +1,10 @@
 /*jslint browser:true, devel:true, white:true, vars:true, eqeq:true */
-/*global $:false, intel:false*/
+/*global intel*/
+
 //shake object
 var watchID;
 var objShake = function() {
+    'use strict';
         return {
             prevX: null,
             prevY: null,
@@ -40,5 +42,6 @@ var objShake = function() {
         };
     }();
 document.addEventListener("intel.xdk.device.ready", function() {
+    'use strict';
     objShake.init(); //start with an injected camera button
 }, false);
