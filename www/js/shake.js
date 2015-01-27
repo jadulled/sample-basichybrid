@@ -3,6 +3,11 @@
 
 //shake object
 var watchID;
+
+function onError() {
+    alert('onError!');
+};
+
 var objShake = function() {
     'use strict';
         return {
@@ -24,24 +29,24 @@ var objShake = function() {
                     frequency: 300,
                     adjustForRotation: true
                 }; // Update every .3 seconds
-                watchID = intel.xdk.accelerometer.watchAcceleration(function(acc) {
+                watchID = navigtor.accelerometer.watchAcceleration(function(acc) {
                     if (objShake.prevX !== null) {
                         var deltaX = Math.abs(acc.x - objShake.prevX);
                         var deltaY = Math.abs(acc.y - objShake.prevY);
                         var deltaZ = Math.abs(acc.z - objShake.prevZ);
                         if (deltaX > objShake.sensitivity || deltaY > objShake.sensitivity || deltaZ > objShake.sensitivity) {
-                            intel.xdk.notification.beep();
+                            navigator.notification.beep(1);
                             console.log("beep");
                         }
                     }
                     objShake.prevX = acc.x;
                     objShake.prevY = acc.y;
                     objShake.prevZ = acc.Z;
-                }, options);
+                }, onError, options);
             }
         };
     }();
-document.addEventListener("intel.xdk.device.ready", function() {
+document.addEventListener("deviceready", function() {
     'use strict';
     objShake.init(); //start with an injected camera button
 }, false);

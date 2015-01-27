@@ -10,14 +10,14 @@ function beepOnce() {
         if(intel.xdk.device.platform == "iOS"){
             alert("The Notification object's beep method may not execute on iOS devices.");
         }
-        intel.xdk.notification.beep(1);
+        navigator.notification.beep(1);
     } catch (e) {}
 } /* vibrate the device with vibrate() method of notification object */
 
 function vibrateDevice() {
     'use strict';
     try {
-        intel.xdk.notification.vibrate();
+        navigator.vibrate(1000);
     } catch (e) {}
 } /* play a sound using player object */
 
