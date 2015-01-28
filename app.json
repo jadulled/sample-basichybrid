@@ -10,5 +10,6 @@
 "apppreview":"true",
 "appname":"demo.basichybrid",
 "relname":"4.0.0",
-"type":"appdesigner"
+"type":"appdesigner",
+"projectTypeName": "com.intel.xdk.projecttype.jsapp"
 }
