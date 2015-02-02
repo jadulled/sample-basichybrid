@@ -78,7 +78,7 @@ var objCamera = function() {
         }
     };
 }();
-document.addEventListener("intel.xdk.device.ready", function() {
+document.addEventListener("deviceready", function() {
   'use strict';  
   objCamera.init({
         inject: true
