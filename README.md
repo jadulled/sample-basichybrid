@@ -1,68 +1,56 @@
-basic-hybrid
-====================
-This sample application demonstrates how to use the intel.xdk JavaScript bridge library for hybrid apps
+Blank HTML App Designer Template for Building Mobile Cordova Web Apps
+=====================================================================
 
-Intel(R) XDK
--------------------------------------------
-This sample is part of the Intel(R) XDK. 
-Please sign up at http://software.intel.com/en-us/html5.
-To see the technical detail of the sample, please visit the sample article page 
-at http://software.intel.com/en-us/articles/intel-xdk-basic-hybrid-app-sample. 
+See [LICENSE.md](<LICENSE.md>) for license terms and conditions.
 
-Application Files
------------------
-* app.json
-* icon.png
-* index.html
-* readme.md
-* screenshot.png
-* css/*
-* js/*
+Use this template as a starting point for an Intel XDK App Designer project that
+will be distributed as a *mobile Cordova web app*. The file named `init-dev.js`
+included as part of this project contains init code that generates an
+`app.Ready` event; which is used as a way to normalize how App Designer starts
+its own code. This technique allows App Designer to use a standard init sequence
+regardless of the specific package type (a *packaged web app* or a *Cordova web
+app*).
 
-Copyright (c) 2012-2013, Intel Corporation. All rights reserved.
+The `icon.png` and `screenshot.png` files are not required by your project. They
+are included for use by the Intel XDK template/demo panel and have no use within
+a real app. You can safely delete them from your project directory.
 
-Redistribution and use in source and binary forms, with or without modification, 
-are permitted provided that the following conditions are met:
+You can build a *Cordova web app* from this template that can be submitted to a
+store using the "Cordova Hybrid Mobile App Platforms" build tiles (for
+Crosswalk, Android, iOS and Windows). The `intelxdk.config.additions.xml` file
+can be used to include options that control your *Cordova web app* builds. For
+example, you can enable remote debug of an Android or Crosswalk Cordova app with
+Chrome DevTools by adding the appropriate preferences to this file.
 
-- Redistributions of source code must retain the above copyright notice, 
-  this list of conditions and the following disclaimer.
+The Intel XDK does not include a mechanism to convert your "Standard HTML5 +
+Cordova Project" into a "Standard HTML5 Project." The simplest way to convert a
+Cordova project into a Standard project is to create a new "Standard" project
+from the appropriate template and copy your files from this project into that
+new project.
 
-- Redistributions in binary form must reproduce the above copyright notice, 
-  this list of conditions and the following disclaimer in the documentation 
-  and/or other materials provided with the distribution.
+The `cordova.js` script is needed to provide your app with access to Cordova
+APIs. To add Cordova APIs to your application you must add the corresponding
+Cordova plugins. See the *Plugins* section on the **Projects** tab.
 
-- Neither the name of Intel Corporation nor the names of its contributors 
-  may be used to endorse or promote products derived from this software 
-  without specific prior written permission.
+**IMPORTANT:** the `intelxdk.js` and `xhr.js` script files are not automatically
+included in this template, as they have been in past versions. Those files are
+only needed for apps built using the legacy AppMobi build containers on the
+**Build** tab, which have been deprecated. We encourage you to use the Cordova
+containers for all new applications. These script files can be added by hand, if
+you require them, as follows:
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE 
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE 
-GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT 
-OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script src="intelxdk.js" id="xdkJSintelxdk_"></script>
+<script src="cordova.js" id="xdkJScordova_"></script>
+<script src="xhr.js" id="xdkJSxhr_"></script>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The id tags are there to help future versions of the Intel XDK precisely
+identify these special lines in your `index.html` file; your application does
+not need to reference them.
 
-App Framework
---------------------------
-* appframework.js (appframework.min.js)
-
-* source:  http://app-framework-software.intel.com/
-* license:  https://github.com/01org/appframework/blob/master/license.txt
-
-Sounds
---------------------------
-*dog_bark.wav
-
-* source: http://freesound.org/people/RawGreen/sounds/159176/
-* license: http://creativecommons.org/publicdomain/zero/1.0/
-
-IMAGES: *.png; images/*.png
-----------------------------------------------------------------------------
-all images are created by Intel Corp.
-they are licensed under the Creative Commons Attribution 3.0 license
-http://creativecommons.org/licenses/by/3.0/us/
+The `xhr.js` file's purpose was to provide external domain access to your mobile
+web app. In a Cordova web app this is controlled via the *Domain Access
+Whitelist* in the *Build Settings* section of the **Projects** tab. For details
+regarding how to specify your domain whitelist see this Cordova doc page:
+<http://cordova.apache.org/docs/en/4.0.0/guide_appdev_whitelist_index.md.html#Whitelist%20Guide>

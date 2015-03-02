@@ -1,4 +1,4 @@
-/*! intel-appframework - v2.1.0 - 2014-04-18 */
+/*! intel-appframework - v2.1.0 - 2014-05-22 */
 
 /**
  * af.actionsheet - an actionsheet for html5 mobile apps
@@ -987,6 +987,7 @@ if (!Date.now)
                         clearInterval(this.scrollTopInterval);
                         this.preventHideRefresh = !this.refreshRunning; // if it's not running why prevent it xD
                         this.moved = false;
+                        if(e.target.getAttribute("no-scroll")) return e.preventDefault();                        
                         this.onTouchStart(e);
                         if(!this.bubbles)
                             e.stopPropagation();
@@ -1763,7 +1764,6 @@ if (!Date.now)
             //save scrollInfo
             this.lastScrollInfo = scrollInfo;
             this.hasMoved = false;
-
             if(this.elementInfo.maxTop === 0 && this.elementInfo.maxLeft === 0 && this.lockBounce)
                 this.scrollToTop(0);
             else
@@ -1842,6 +1842,7 @@ if (!Date.now)
         jsScroller.prototype.onTouchMove = function (event) {
 
             if (this.currentScrollingObject === null) return;
+            if(event.target&&event.target.getAttribute('type')&&event.target.getAttribute('type').toLowerCase().indexOf('range')!==-1) return;
             //event.preventDefault();
             var scrollInfo = this.calculateMovement(event);
             this.calculateTarget(scrollInfo);
@@ -1927,7 +1928,7 @@ if (!Date.now)
                     this.lastScrollInfo.x = baseTop + changeX;
                 }
             }
-            if(this.lockBounce||(!this.refresh)){
+            if(this.lockBounce&&(!this.refresh)){
 
                 if(this.lastScrollInfo.x>0){
                     this.lastScrollInfo.x=0;
@@ -2775,11 +2776,11 @@ if (!Date.now)
         return $.touchLayer;
     };
     //configuration stuff
-    var inputElements = ["input", "select", "textarea"];
+    var inputElements = ["input", "select", "textarea","range"];
     var autoBlurInputTypes = ["button", "radio", "checkbox", "range", "date"];
     var requiresJSFocus = $.os.ios; //devices which require .focus() on dynamic click events
     var verySensitiveTouch = $.os.blackberry; //devices which have a very sensitive touch and touchmove is easily fired even on simple taps
-    var inputElementRequiresNativeTap = $.os.blackberry||$.os.fennec || ($.os.android && !$.os.chrome); //devices which require the touchstart event to bleed through in order to actually fire the click on select elements
+    var inputElementRequiresNativeTap = $.os.blackberry||$.os.fennec || ($.os.android); //devices which require the touchstart event to bleed through in order to actually fire the click on select elements
 //    var selectElementRequiresNativeTap = $.os.blackberry||$.os.fennec || ($.os.android && !$.os.chrome); //devices which require the touchstart event to bleed through in order to actually fire the click on select elements
 //    var focusScrolls = $.os.ios; //devices scrolling on focus instead of resizing
     var requirePanning = $.os.ios&&!$.os.ios7; //devices which require panning feature
@@ -3130,7 +3131,6 @@ if (!Date.now)
             this.dY = e.touches[0].pageY;
             this.lastTimestamp = e.timeStamp;
             this.lastTouchStartX = this.lastTouchStartY = null;
-
             if ($.os.ios) {
 
                 if (skipTouchEnd === e.touches[0].identifier) {
@@ -3171,7 +3171,7 @@ if (!Date.now)
 
             // We allow forcing native tap in android devices (required in special cases)
             var forceNativeTap = ($.os.android && e && e.target && e.target.getAttribute && e.target.getAttribute("data-touchlayer") === "ignore");
-
+            
             //if on edit mode, allow all native touches
             //(BB10 must still be prevented, always clicks even after move)
             if (forceNativeTap || (this.isFocused_ && !$.os.blackberry10)) {
@@ -3283,7 +3283,7 @@ if (!Date.now)
             this.scrollTimeoutEl_ = null;
         },
 
-        onTouchMove: function(e) {
+        onTouchMove: function(e) {            
             //set it as moved
             var wasMoving = this.moved;
             this.moved = true;
@@ -3312,9 +3312,9 @@ if (!Date.now)
             }
             //non-native scroll devices
 
-            if ((!$.os.blackberry10)) {
+            if ((!$.os.blackberry10&&!this.requiresNativeTap)) {
                 //legacy stuff for old browsers
-                if (!this.isScrolling || !$.feat.nativeTouchScroll)
+                if (!this.isScrolling || (!$.feat.nativeTouchScroll&&!this.requiresNativeTap))
                     e.preventDefault();
                 return;
             }
@@ -3330,6 +3330,7 @@ if (!Date.now)
                 itMoved = itMoved && !(Math.abs(this.cX) < 10 && Math.abs(this.cY) < 10);
             }
 
+
             //don't allow document scroll unless a specific click demands it further ahead
             if (!$.os.ios || !this.requiresNativeTap) this.allowDocumentScroll_ = false;
 
@@ -3340,6 +3341,7 @@ if (!Date.now)
 
                 //a generated click
             } else if (!itMoved && !this.requiresNativeTap) {
+
                 this.scrollerIsScrolling = false;
                 if (!this.trackingClick) {
                     return;
@@ -3830,7 +3832,7 @@ if (!Date.now)
                 if(this.isIntel){
                     var xdkLaunch=function(){
                         that.launch();
-                        document.removeEventListener(xdkLaunch);
+                        document.removeEventListener("intel.xdk.device.ready",xdkLaunch);
                     };
                     document.addEventListener("intel.xdk.device.ready",xdkLaunch);
                 }
@@ -4326,7 +4328,7 @@ if (!Date.now)
             var panelMask = $.query(".afui_panel_mask");
             time = time || this.transitionTime;
             var open = this.isSideMenuOn();
-            var toX=aside?"-"+asideMenu.width():menu.width();
+            var toX=aside?"-"+numOnly(asideMenu.css('width')):numOnly(menu.css('width'));
             // add panel mask to block when side menu is open for phone devices
             if(panelMask.length === 0 && window.innerWidth < $.ui.handheldMinWidth){
                 els.append("<div class='afui_panel_mask'></div>");
@@ -4574,7 +4576,7 @@ if (!Date.now)
                 $.query("#header").append(elems);
                 //Do not animate - sometimes they act funky
                 if (!$.ui.animateHeaders) {
-                    if (that.prevHeader.data("parent")){                        
+                    if (that.prevHeader.data("parent")){
                         if($.feat.nativeTouchScroll||$.os.desktop || !useScroller ){
                             this.prevHeader.appendTo("#" + this.prevHeader.data("parent"));
                         }
@@ -4602,7 +4604,7 @@ if (!Date.now)
                     time: that.transitionTime,
                     delay: numOnly(that.transitionTime) / 5 + "ms",
                     complete: function() {
-                        if (that.prevHeader.data("parent")){                        
+                        if (that.prevHeader.data("parent")){
                             if($.feat.nativeTouchScroll||$.os.desktop || !useScroller ){
                                 that.prevHeader.appendTo("#" + that.prevHeader.data("parent"));
                             }
@@ -5128,7 +5130,7 @@ if (!Date.now)
             //check for custom footer
             var that = this;
             var hasFooter = what.getAttribute("data-footer");
-            var hasHeader = what.getAttribute("data-header");            
+            var hasHeader = what.getAttribute("data-header");
             //$asap removed since animations are fixed in css3animate
             if (hasFooter && hasFooter.toLowerCase() === "none") {
                 that.toggleNavMenu(false);
@@ -5136,7 +5138,7 @@ if (!Date.now)
             } else {
                 that.toggleNavMenu(true);
             }
-            if (hasFooter && that.customFooter !== hasFooter) {                
+            if (hasFooter && that.customFooter !== hasFooter) {
                 that.customFooter = hasFooter;
                 that.updateNavbarElements(hasFooter);
             } else if (hasFooter !== that.customFooter) {
@@ -5163,7 +5165,7 @@ if (!Date.now)
 
             //Load inline footers
             var inlineFooters = $(what).find("footer");
-            if (inlineFooters.length > 0) {                
+            if (inlineFooters.length > 0) {
                 that.customFooter = what.id;
                 inlineFooters.data("parent", what.id);
                 that.updateNavbarElements(inlineFooters);
@@ -5411,7 +5413,9 @@ if (!Date.now)
                 this.setBackButtonVisibility(false);
                 this.history = [];
                 $("#header #menubadge").css("float", "left");
-            } else if (this.showBackButton && this.showBackbutton) this.setBackButtonVisibility(true);
+            } else {
+                this.setBackButtonVisibility( this.showBackButton && this.showBackbutton );
+            }
             this.activeDiv = what;
             if (this.scrollingDivs[this.activeDiv.id]) {
                 this.scrollingDivs[this.activeDiv.id].enable(this.resetScrollers);
@@ -5481,10 +5485,10 @@ if (!Date.now)
                             urlHash = that.addContentDiv(urlHash, xmlhttp.responseText, anchor.title ? anchor.title : target, refresh, refreshFunction);
                     } else {
 
-                        that.updatePanel("afui_ajax", xmlhttp.responseText);                                                
+                        that.updatePanel("afui_ajax", xmlhttp.responseText);
                         $.query("#afui_ajax").attr("data-title",anchor.title ? anchor.title : target);
                         that.loadContent("#afui_ajax", newTab, back, transition);
-                        
+
                         doReturn = true;
                     }
                     //Let's load the content now.
@@ -5825,7 +5829,7 @@ if (!Date.now)
 
 
                     if($.ui.splitview&&window.innerWidth>parseInt($.ui.handheldMinWidth,10)){
-                        $.ui.sideMenuWidth=$("#menu").width()+"px";
+                        $.ui.sideMenuWidth=$("#menu").css("width")+"px";
                     }
 
                     var firstPanelId = that.getPanelId(defaultHash);
@@ -5853,9 +5857,13 @@ if (!Date.now)
                     that.launchCompleted = true;
                     //trigger ui ready
                     $.query("#afui #splashscreen").remove();
-                    setTimeout(function(){
+                    if($.os.fennec){
                         $(document).trigger("afui:ready");
-                    });
+                    }
+                    else
+                        setTimeout(function(){
+                            $(document).trigger("afui:ready");
+                        });
 
                 };
                 if (loadingDefer) {
@@ -6041,7 +6049,7 @@ if (!Date.now)
             document.body.style.height = "100%";
             document.documentElement.style.minHeight = window.innerHeight;
         }, 30);
-        document.removeEventListener(xdkDeviceReady);
+        document.removeEventListener("intel.xdk.device.ready",xdkDeviceReady);
     };
     document.addEventListener("intel.xdk.device.ready",xdkDeviceReady);
     //Fix an ios bug where scrolling will not work with rotation
