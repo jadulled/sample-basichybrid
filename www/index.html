@@ -78,13 +78,26 @@
         <script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
         <script type="application/javascript" src="js/index_user_scripts.js"></script>
 
+        <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            var init = function init() {
+                 // Wait for Cordova to load
+                 document.addEventListener("deviceready", onDeviceReady, false);
+                 // Cordova is ready
+                 function onDeviceReady() {
+                     console.log(navigator.notification);
+                 }
+              };
+              window.onload = init;
+        </script>
+
         <!--
 		<script type="text/javascript" charset="utf-8" src="js/camera.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/shake.js"></script> 
 		<script type="text/javascript" charset="utf-8" src="js/location.js"></script> 
 		-->
 
-<!--        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+        <!--        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
         <script type="text/javascript" charset="utf-8">
             function wakeUp() {
             document.getElementById("shroud").style.display = "none";
@@ -126,7 +139,7 @@
                                 <div class="col uib_col_4 col-1_12-12" data-uib="layout/col" data-ver="0">
                                     <div class="widget-container content-area vertical-col">
 
-                                        <a class="button widget uib_w_3 d-margins" data-uib="app_framework/button" data-ver="1">Beep</a><a class="button widget uib_w_4 d-margins" data-uib="app_framework/button" data-ver="1">Vibrate</a><a class="button widget uib_w_5 d-margins"
+                                        <a class="button widget uib_w_3 d-margins" data-uib="app_framework/button" data-ver="1">Alert</a><a class="button widget uib_w_4 d-margins" data-uib="app_framework/button" data-ver="1">Vibrate</a><a class="button widget uib_w_5 d-margins"
                                         data-uib="app_framework/button" data-ver="1">Play Sound</a><a class="button widget uib_w_6 d-margins" data-uib="app_framework/button" data-ver="1">Play Dead</a><span class="uib_shim"></span>
                                     </div>
                                 </div>
