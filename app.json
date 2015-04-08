@@ -1,15 +1,25 @@
 {
-"reponame":"sample-basichybrid",
-"title":"Basic Hybrid App",
-"tooltip":"A sample app showcasing how to use the intel.xdk library (JavaScript bridge library) for hybrid apps",
-"description":"[App Designer Ready] This demonstration illustrates how to set up a basic application with the intel.xdk library (JavaScript bridge library) to access native features of the device.",
-"articleUrl":"https://software.intel.com/en-us/html5/articles/intel-xdk-basic-hybrid-app-sample",
-"keywords":["App Framework", "intel.xdk API", "App Designer"],
-"visible" : "true",
-"highlights" : ["App Framework", "intel.xdk API", "App Designer"],
-"apppreview":"true",
-"appname":"demo.basichybrid",
-"relname":"4.0.0",
-"type":"appdesigner",
-"projectTypeName": "com.intel.xdk.projecttype.jsapp"
+   "relName" : "4.0.0",
+   "articleUrl" : "https://software.intel.com/en-us/html5/articles/intel-xdk-basic-hybrid-app-sample",
+   "highlights" : [
+      "App Framework",
+      "intel.xdk API",
+      "App Designer"
+   ],
+   "projectTypeName" : "com.intel.xdk.projecttype.jsapp",
+   "description" : "[App Designer Ready] This demonstration illustrates how to set up a basic application with the intel.xdk library (JavaScript bridge library) to access native features of the device.",
+   "appPreview" : true,
+   "repoName" : "sample-basichybrid",
+   "visible" : true,
+   "tooltip" : "A sample app showcasing how to use the intel.xdk library (JavaScript bridge library) for hybrid apps",
+   "appName" : "demo.basichybrid",
+   "type" : "appdesigner",
+   "title" : "Basic Hybrid App",
+   "appAuthor_": "Intel XDK",
+   "keywords" : [
+      "App Framework",
+      "intel.xdk API",
+      "App Designer"
+   ],
+   "mobile" : false
 }
