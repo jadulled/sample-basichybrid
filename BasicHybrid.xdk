@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "https://appcenter.html5tools-software.intel.com/api/v2.0/redirect/projectrenderers/release-2015-ww13/jsapp/samples-basichybrid/sample.zip",
       "projectGuid": "00000000-0000-0000-0000-000000000000",
-      "lastModifiedDate": 1428523529937,
+      "lastModifiedDate": 1428528605957,
       "creationDate": 1428523529849
     },
     "XDK-app-designer": "true",
@@ -20,7 +20,7 @@
     "cordovaPlugins": [
       {
         "id": "org.apache.cordova.splashscreen",
-        "version": "?",
+        "version": "0.3.5",
         "selectedState": "Included",
         "data": {},
         "paramvals": {},
@@ -45,7 +45,7 @@
       },
       {
         "id": "org.apache.cordova.vibration",
-        "version": "?",
+        "version": "0.3.12",
         "selectedState": "Included",
         "data": {},
         "paramvals": {},
@@ -54,7 +54,7 @@
       },
       {
         "id": "org.apache.cordova.dialogs",
-        "version": "?",
+        "version": "0.2.11",
         "selectedState": "Included",
         "data": {},
         "paramvals": {},
@@ -79,7 +79,7 @@
       },
       {
         "id": "org.apache.cordova.media",
-        "version": "?",
+        "version": "0.2.15",
         "selectedState": "Included",
         "data": {},
         "paramvals": {},
@@ -105,17 +105,8 @@
         "dependedBy": []
       },
       {
-        "id": "com.intel.security",
-        "selectedState": "Excluded",
-        "data": {},
-        "paramvals": {},
-        "checksum": "03b47637c462b96985f15563162f154b0f87a7e4284bce254743730323eabd4b",
-        "dependsOn": [],
-        "dependedBy": []
-      },
-      {
         "id": "org.apache.cordova.device",
-        "version": "?",
+        "version": "0.2.13",
         "selectedState": "Excluded",
         "data": {},
         "paramvals": {},
@@ -125,7 +116,7 @@
       },
       {
         "id": "org.apache.cordova.file",
-        "version": "?",
+        "version": "1.3.2",
         "selectedState": "Included",
         "data": {},
         "paramvals": {},
@@ -138,7 +129,7 @@
       },
       {
         "id": "org.apache.cordova.file-transfer",
-        "version": "?",
+        "version": "0.4.8",
         "selectedState": "Included",
         "data": {},
         "paramvals": {},
@@ -149,7 +140,7 @@
       },
       {
         "id": "org.apache.cordova.inappbrowser",
-        "version": "?",
+        "version": "0.5.4",
         "selectedState": "Included",
         "data": {},
         "paramvals": {},
@@ -184,8 +175,8 @@
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "iosProvs_": [],
-        "cordovaCLIVersion_": "?",
-        "crosswalkVersion_": "?",
+        "cordovaCLIVersion_": "4.1.2",
+        "crosswalkVersion_": "10",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a Cordova mobile web app using the App Designer UI editor.",
@@ -209,8 +200,8 @@
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "iosProvs_": [],
-        "cordovaCLIVersion_": "?",
-        "crosswalkVersion_": "?",
+        "cordovaCLIVersion_": "4.1.2",
+        "crosswalkVersion_": "10",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a Cordova mobile web app using the App Designer UI editor.",
@@ -233,8 +224,8 @@
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "iosProvs_": [],
-        "cordovaCLIVersion_": "?",
-        "crosswalkVersion_": "?",
+        "cordovaCLIVersion_": "4.1.2",
+        "crosswalkVersion_": "10",
         "appVersion_": "0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a Cordova mobile web app using the App Designer UI editor."
@@ -256,8 +247,8 @@
         "addlPermissions_": "",
         "excludedLibraries_": "",
         "iosProvs_": [],
-        "cordovaCLIVersion_": "?",
-        "crosswalkVersion_": "?",
+        "cordovaCLIVersion_": "4.1.2",
+        "crosswalkVersion_": "10",
         "appVersion_": "0.0.0.1",
         "appAuthor_": "Intel XDK",
         "appDescription_": "Template to develop a Cordova mobile web app using the App Designer UI editor."
