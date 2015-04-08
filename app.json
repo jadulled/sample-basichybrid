@@ -15,6 +15,7 @@
    "appName" : "demo.basichybrid",
    "type" : "appdesigner",
    "title" : "Basic Hybrid App",
+   "appAuthor_": "Intel XDK",
    "keywords" : [
       "App Framework",
       "intel.xdk API",
